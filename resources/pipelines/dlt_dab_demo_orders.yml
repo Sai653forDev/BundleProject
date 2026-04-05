@@ -1,0 +1,14 @@
+resources:
+  pipelines:
+    pipeline_dlt_orders_pipeline:
+      name: dlt_orders_pipeline
+      libraries:
+        - notebook:
+            path: ../notebooks/dlt_dab_demo_orders.ipynb
+      schema: ${resources.schemas.bronze_schema.name}
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: ${resources.schemas.bronze_schema.catalog_name}
+      serverless: true
